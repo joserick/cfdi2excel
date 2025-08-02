@@ -255,6 +255,8 @@ class MainApplication(Frame):
                 isr = 0.0
                 ieps = 0.0
                 for t in root.findall('cfdi:Impuestos/cfdi:Traslados/cfdi:Traslado', namespaces=nsmap):
+                    if t.get('TipoFactor') == 'Exento':
+                        continue
                     if t.get('Impuesto') == '002':
                         iva += float(t.get('Importe'))
                     if t.get('Impuesto') == '001':
